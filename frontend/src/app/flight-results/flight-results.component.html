@@ -1,0 +1,68 @@
+<div class="container">
+    <h1>Flight Results</h1>
+    
+    <div class="card">
+      <div class="header-info" *ngIf="flights.length > 0">
+        <!-- <h2>{{ flights[0].origin }} to {{ flights[0].destination }}</h2> -->
+        <!-- <p>{{ flights[0].departure_date | date:'fullDate' }} | {{ flights[0].guests }} Adult</p> -->
+        <h2>{{ flights[0].origin }} to {{ flights[0].destination }}</h2>
+        <p>{{ formatDepartureDate(flights[0].departure_date) }} | {{ flights[0].guests }} Adult</p>  
+    </div>
+      
+      <div *ngIf="flights.length === 0">
+        <p>No flights found.</p>
+      </div>
+  
+      <!-- Sort Buttons -->
+<!-- Sort Buttons -->
+    <div *ngIf="flights.length > 0" class="button-group">
+        <button 
+        [ngClass]="{'active': selectedSort === 'cheapest'}" 
+        (click)="sortFlights('cheapest')">Cheapest</button>
+        <button 
+        [ngClass]="{'active': selectedSort === 'fastest'}" 
+        (click)="sortFlights('fastest')">Fastest</button>
+        <button 
+        [ngClass]="{'active': selectedSort === 'bestValue'}" 
+        (click)="sortFlights('bestValue')">Best Value</button>
+    </div>
+  
+
+      <!-- Paginated Flight Cards -->
+      <div *ngIf="flights.length > 0">
+        <div *ngFor="let flight of paginatedFlights" class="card">
+          <div class="flight-info">
+            <div class="flight-time">
+              {{ flight.departureTimeFormatted }} - {{ flight.arrivalTimeFormatted }}
+            </div>
+            <div class="flight-price">${{ flight.flight_price }}</div>
+
+            <!-- <div class="flight-number">{{ flight.flight_number }}</div> -->
+          </div>
+          
+          <div class="flight-info-container">
+            <div class="flight-detail">
+              <div>{{ flight.origin }} - {{ flight.destination }}</div>
+              <!-- <div>Destination: {{ flight.destination }}</div> -->
+            </div>          
+            <!-- <div class="price-duration"> -->
+              <div class="flight-duration">{{ flight.duration }}</div>
+            <!-- </div> -->
+            <div class="seats-available">{{ flight.seats_available }} seat(s) left</div>
+          </div>
+          
+          <!-- <button class="select">Select</button> -->
+          <button class="select" (click)="goToBooking(flight)">Select</button>
+
+        </div>
+      </div>
+  
+      <!-- Pagination Controls -->
+      <div class="pagination-controls" *ngIf="totalPages > 1">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+    </div>
+  </div>
+  

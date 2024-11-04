@@ -1,0 +1,17 @@
+[
+    {
+        "name": "New York",
+        "description": "Experience the city that never sleeps",
+        "price": "$299"
+    },
+    {
+        "name": "Tokyo",
+        "description": "Discover the blend of tradition and future",
+        "price": "$599"
+    },
+    {
+        "name": "Paris",
+        "description": "Embrace the city of love and lights",
+        "price": "$399"
+    }
+]

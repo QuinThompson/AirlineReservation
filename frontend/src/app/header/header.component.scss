@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+}
+.logo {
+  color: #e94e1b;
+  font-weight: bold;
+}
+.navigation a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #333;
+}

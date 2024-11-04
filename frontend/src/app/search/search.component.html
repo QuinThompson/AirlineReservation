@@ -1,0 +1,48 @@
+<div class="search-container">
+    <h1>Discover Your Next Adventure</h1>
+    
+    <div class="card">
+      <div class="button-group">
+        <button 
+          [class.active]="activeButton === 'Roundtrip'" 
+          (click)="setActive('Roundtrip')">Roundtrip
+        </button>
+        <button 
+          [class.active]="activeButton === 'One Way'" 
+          (click)="setActive('One Way')">One Way
+        </button>
+        <button 
+          [class.active]="activeButton === 'Recent Searches'" 
+          (click)="setActive('Recent Searches')">Recent Searches
+        </button>
+      </div>
+      
+      <div class="location-row">
+        <select [(ngModel)]="fromCountry">
+          <option value="" disabled selected>From</option>
+          <option *ngFor="let country of countries" [value]="country.name.common">{{ country.name.common }}</option>
+        </select>
+  
+        <select [(ngModel)]="toCountry">
+          <option value="" disabled selected>To</option>
+          <option *ngFor="let country of countries" [value]="country.name.common">{{ country.name.common }}</option>
+        </select>
+      </div>
+  
+      <div class="input-row">
+        <input type="number" 
+        placeholder="Number of guests" 
+        [(ngModel)]="guests" 
+        min="0" 
+        (input)="guests = guests || null" 
+        [value]="guests === null ? '' : guests" /> <!-- Show empty string if guests is null -->
+
+
+        <!-- <input type="number" placeholder="1 Guest" [(ngModel)]="guests" /> -->
+        <input type="date" placeholder="Depart Date" [(ngModel)]="departDate" />
+        <input type="date" placeholder="Return Date" [(ngModel)]="returnDate" />
+        <button class="search-button" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+  </div>
+  

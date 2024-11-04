@@ -1,0 +1,4 @@
+<app-header></app-header>
+<app-search (searchClicked)="onSearch($event.loading, $event.flights)"></app-search>
+<app-featured-destinations *ngIf="!showFlightResults"></app-featured-destinations>
+<app-flight-results *ngIf="showFlightResults" [flights]="flights"></app-flight-results>
