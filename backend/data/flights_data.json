@@ -1,0 +1,123 @@
+[
+    {
+        "flight_number": "AA800",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "08:00:00",
+        "arrival_time": "13:00:00",
+        "seats_available": 150,
+        "flight_price": 450,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA900",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "12:00:00",
+        "arrival_time": "16:00:00",
+        "seats_available": 140,
+        "flight_price": 500,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA700",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "18:30:00",
+        "arrival_time": "22:30:00",
+        "seats_available": 100,
+        "flight_price": 470,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA600",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "13:15:00",
+        "arrival_time": "19:15:00",
+        "seats_available": 130,
+        "flight_price": 480,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA500",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "22:00:00",
+        "arrival_time": "03:00:00",
+        "seats_available": 90,
+        "flight_price": 520,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA400",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "09:30:00",
+        "arrival_time": "13:30:00",
+        "seats_available": 120,
+        "flight_price": 460,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA300",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "15:45:00",
+        "arrival_time": "18:45:00",
+        "seats_available": 110,
+        "flight_price": 490,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA200",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "19:00:00",
+        "arrival_time": "23:00:00",
+        "seats_available": 105,
+        "flight_price": 530,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA100",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "16:30:00",
+        "arrival_time": "20:30:00",
+        "seats_available": 95,
+        "flight_price": 510,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA050",
+        "origin": "Trinidad and Tobago",
+        "destination": "United States",
+        "departure_date": "2024-11-01",
+        "departure_time": "23:30:00",
+        "arrival_time": "04:30:00",
+        "seats_available": 80,
+        "flight_price": 550,
+        "duration": "3H 00M"
+    },
+    {
+        "flight_number": "AA110",
+        "origin": "Trinidad and Tobago",
+        "destination": "Brazil",
+        "departure_date": "2024-11-01",
+        "departure_time": "10:00:00",
+        "arrival_time": "12:00:00",
+        "seats_available": 120,
+        "flight_price": 300,
+        "duration": "2H 00M"
+    }
+]
