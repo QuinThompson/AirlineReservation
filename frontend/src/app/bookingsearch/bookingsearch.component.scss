@@ -24,21 +24,12 @@ h3 {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 20px;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
 }
 
 .form-group {
   margin-bottom: 20px;
   width: 100%;
-  margin-right: 10px;
-}
-
-.form-group:last-child {
-  margin-right: 0;
 }
 
 label {
@@ -56,7 +47,6 @@ label {
 }
 
 .btn {
-//   background-color: #db2d2e;
   background-color: #e94e1b;
   color: white;
   padding: 10px 0;
@@ -67,25 +57,15 @@ label {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  display: block; /* Center the button */
+  margin: 0 auto; /* Center the button horizontally */
 }
 
 .btn:hover {
   background-color: #c62828;
 }
 
-.card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
+hr {
+    border: 1px solid #ccc; /* Change color as needed */
+    margin: 10px 0; /* Adjust spacing */
   }
-  
-.pagination-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px; /* Adjust the space as needed */
-    margin-top: 20px;
-}
-  

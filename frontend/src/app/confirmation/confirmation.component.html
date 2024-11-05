@@ -1,0 +1,34 @@
+<div class="center-wrapper">
+  <div class="confirmation-container">
+    <div class="confirmation-circle"></div>
+    <h1>Booking Confirmed!</h1>
+    <p>Thank you for choosing SkyWay Airlines. Your booking has been successfully confirmed.</p>
+
+    <div class="booking-details">
+      <h2>Booking Details</h2>
+      <p><strong>Booking Reference:</strong> {{ bookingreference }}</p>
+      <p><strong>Flight Number:</strong> {{ flight.flight_number }}</p>
+      <p><strong>Flight Route:</strong> {{ flight.origin}} to {{ flight.destination}}</p>
+      <p><strong>Date:</strong> {{ formatDepartureDate(flight.departure_date) }}</p>
+      <div *ngIf="formGroup.length > 0">
+        <div *ngFor="let passenger of formGroup">
+            <p><strong>Passenger:</strong> {{ passenger.firstName }} {{ passenger.lastName }} </p>
+        </div>
+      </div>
+      <!-- <p>{{ formatDepartureDate(flights[0].departure_date) }} | {{ flights[0].guests }} Adult</p>   -->
+
+    </div>
+
+    <div class="actions">
+        <!-- <button (click)="downloadHTML()">Download E-Ticket</button> -->
+        <button (click)="downloadPDF()">Download E-Ticket</button>
+        <button (click)="printConfirmation()">Print Confirmation</button>
+        <!-- <button (click)="downloadHTML()">Download HTML</button> New download button -->
+    </div>
+
+    <p class="note">
+      We've sent a confirmation email to your registered email address.
+      If you have any questions, please contact our customer support.
+    </p>
+  </div>
+</div>

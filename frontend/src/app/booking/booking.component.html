@@ -1,1 +1,52 @@
-<p>booking works!</p>
+<div class="container">
+    <div class="card">
+      <h2>Passenger Information</h2>
+      <h3>Passenger {{ currentPage + 1 }}</h3>
+  
+      <form [formGroup]="currentPassengerForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" formControlName="dob" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select formControlName="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="passportNumber">Passport Number</label>
+            <input type="text" formControlName="passportNumber" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" formControlName="phone" class="form-control" />
+        </div>
+        
+        <div class="pagination-buttons">
+          <button type="button" class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage === 0">
+            Previous
+          </button>
+          <button type="button" class="btn btn-primary" (click)="onContinue()" [disabled]="currentPage === totalGuests - 1 && !currentPassengerForm.valid">
+            {{ currentPage === totalGuests - 1 ? 'Continue to Payment' : 'Next' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

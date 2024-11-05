@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Search Booking</h2>
+  <div class="form-card">
+    <h3>Enter your Booking Reference</h3>
+    <!-- <form (ngSubmit)="searchBooking()"> -->
+      <div class="form-group">
+        <label for="bookingReference">Booking Reference Number</label>
+        <input 
+          type="text" 
+          id="bookingReference" 
+          class="form-control"
+          name="bookingReference" 
+          [(ngModel)]="bookingReference"
+          required
+        />
+      </div>
+      <!-- <button .type="submit" class="btn">Search</button> -->
+      <button class="btn" (click)="searchBooking()">Search</button>        
+    <!-- </form> -->
+  </div>
+  <div *ngIf="bookingDetails && bookingDetails.length > 0">
+    <h3>Booking Details</h3>
+    <div *ngFor="let booking of bookingDetails" class="booking-detail">
+      <p><strong>Booking Reference:</strong> {{ booking.booking_reference }}</p>
+      <p><strong>Flight Number:</strong> {{ booking.flight_id.flight_number }}</p>
+      <p><strong>Passenger Name:</strong> {{ booking.passenger.first_name }} {{ booking.passenger.last_name }}</p>
+      <p><strong>Date:</strong> {{ formatDepartureDate(booking.flight_id.departure_date) }}</p>
+      
+      <!-- Horizontal separator -->
+      <hr />
+    </div>
+  </div>
+  
+
+  <!-- <div *ngIf="bookingDetails.length > 0">
+    <h3>Booking Details</h3>
+    <div *ngFor="let booking of bookingDetails" class="booking-detail">
+      <p><strong>Booking Reference:</strong> {{ booking.booking_reference }}</p>
+      <p><strong>Created At:</strong> {{ booking.created_at }}</p>
+      <p><strong>Updated At:</strong> {{ booking.updated_at }}</p>
+      
+      <h4>Flight Details</h4>
+      <p><strong>Flight Number:</strong> {{ booking.flight_id.flight_number }}</p>
+      <p><strong>Departure Date:</strong> {{ formatDepartureDate(booking.flight_id.departure_date) }}</p>
+      <p><strong>Origin:</strong> {{ booking.flight_id.origin }}</p>
+      <p><strong>Destination:</strong> {{ booking.flight_id.destination }}</p>
+
+      <h4>Passenger Details</h4>
+      <p><strong>Name:</strong> {{ booking.passenger.first_name }} {{ booking.passenger.last_name }}</p>
+      <p><strong>Email:</strong> {{ booking.passenger.email }}</p>
+      <p><strong>Phone Number:</strong> {{ booking.passenger.phone_number }}</p>
+    </div>
+  </div> -->
+
+
+</div>

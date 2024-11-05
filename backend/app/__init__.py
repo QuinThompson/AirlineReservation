@@ -48,6 +48,7 @@ def populate_flights():
                 origin=flight['origin'],
                 destination=flight['destination'],
                 departure_date=flight['departure_date'],
+                arrival_date=flight['arrival_date'],
                 departure_time=flight['departure_time'],
                 arrival_time=flight['arrival_time'],
                 seats_available=flight['seats_available'],

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,11 +12,15 @@ import { CommonModule } from '@angular/common';
 })
 export class FlightResultsComponent implements OnInit {
   @Input() flights: any[] = []; // Accept flights data via Input property
+  // @Output() bookFlight = new EventEmitter<any>(flights: any[] }>(););
+  @Output() bookFlight = new EventEmitter<{ showBooking: boolean; flights: any[] }>(); // Emit loading state and flights
+  
   currentPage: number = 1;
   pageSize: number = 5; // Show 5 flights per page
   selectedSort: string = ''; // Track selected sorting criterion
 
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   // Getter to calculate total pages based on flights and page size
   get totalPages(): number {
@@ -67,6 +72,18 @@ export class FlightResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const flightsData = params['flights'];
+      if (flightsData) {
+        this.flights = JSON.parse(flightsData);  // Parse the JSON string back into an array
+      } else {
+        console.warn('No flight data received in FlightResultsComponent');
+      }
+      console.log('Flights received in FlightResultsComponent:', this.flights); 
+    });
+
+    // console.log('Flights received in FlightResultsComponent:', this.flights); // Debugging line
+    // console.log(this.flights)
     // Optionally handle flights data initialization here if needed
   }
 
@@ -103,6 +120,13 @@ export class FlightResultsComponent implements OnInit {
   }
 
   goToBooking(flight: any) {
-    this.router.navigate(['/booking'], { queryParams: { flightId: flight.id } });
+    // console.log('Navigating to booking for flight:', flight); // Debugging line
+    // this.router.navigate(['/booking'], { queryParams: { flightId: flight } });
+    this.router.navigate(['/booking'], { queryParams: { flights: JSON.stringify(flight) } });
+
+    // this.selectFlight.emit(flight);
+    // this.bookFlight.emit(flight); // Emit the selected flight for booking
+    this.bookFlight.emit({ showBooking: true, flights: flight });
+
   }
 }
