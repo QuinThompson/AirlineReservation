@@ -15,15 +15,12 @@
             <p><strong>Passenger:</strong> {{ passenger.firstName }} {{ passenger.lastName }} </p>
         </div>
       </div>
-      <!-- <p>{{ formatDepartureDate(flights[0].departure_date) }} | {{ flights[0].guests }} Adult</p>   -->
-
     </div>
 
     <div class="actions">
         <!-- <button (click)="downloadHTML()">Download E-Ticket</button> -->
         <button (click)="downloadPDF()">Download E-Ticket</button>
         <button (click)="printConfirmation()">Print Confirmation</button>
-        <!-- <button (click)="downloadHTML()">Download HTML</button> New download button -->
     </div>
 
     <p class="note">

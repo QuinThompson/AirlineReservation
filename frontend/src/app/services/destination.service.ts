@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DestinationService {  // Make sure this class is named DestinationService
+export class DestinationService {
   private destinationsUrl = 'assets/data/destinations.json';
 
   constructor(private http: HttpClient) {}

@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.scss'] // Fix the styleUrls spelling
+  styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent implements OnInit {
   @Input() flight: any;
@@ -42,7 +42,7 @@ export class ConfirmationComponent implements OnInit {
 
   downloadPDF() {
     // const element = document.querySelector('.confirmation-container');
-    const element = document.querySelector('.confirmation-container') as HTMLElement; // Cast to HTMLElement
+    const element = document.querySelector('.confirmation-container') as HTMLElement;
 
     if (element) {
       html2canvas(element).then((canvas: HTMLCanvasElement) => {
@@ -58,7 +58,7 @@ export class ConfirmationComponent implements OnInit {
         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
         position += heightLeft;
 
-        pdf.save('booking-confirmation.pdf'); // Name of the PDF file
+        pdf.save('booking-confirmation.pdf');
       });
     }
   }

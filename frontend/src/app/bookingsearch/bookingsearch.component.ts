@@ -22,41 +22,16 @@ export class BookingsearchComponent {
   constructor(private route: ActivatedRoute,  private fb: FormBuilder, private router: Router, private http: HttpClient) {
   }
 
-
-  // bookingReference: string = '';
-  bookingDetails: any; // You can create an interface for stronger typing
-
-  // constructor(private http: HttpClient) {}
+  bookingDetails: any;
 
   searchBooking() {
     console.log('Searching for booking with reference:', this.bookingReference);
-    // if (this.bookingReference) {
-    //   this.http.get(`/api/bookings/${this.bookingReference}`).subscribe(
-    //     (data) => {
-    //       this.bookingDetails = data; // Assign the retrieved data to bookingDetails
-    //     },
-    //     (error) => {
-    //       console.error('Error fetching booking details', error);
-    //     }
-    //   );
-    // } else {
-    //   alert('Please enter a booking reference number.');
-    // }
-    // console.log('Request data:', requestData);
     if (this.bookingReference) {
       this.http.get(`http://localhost:3003/api/bookings/${this.bookingReference}`).subscribe(
         (response: any) => {
           console.log('Booking created:', response);
-          this.bookingDetails = response;  // Assign the response data to bookingDetails
+          this.bookingDetails = response; 
           console.log('Booking details:', this.bookingDetails);
-
-          // this.router.navigate(['/confirmation'], {
-          //   queryParams: {
-          //     booking_reference: response.booking_reference,
-          //     flights: JSON.stringify(response.flight_id),
-          //     passengers: JSON.stringify(response.passengers)
-          //   }
-          // });
         },
         (error: any) => {
           console.error('Error creating booking:', error);

@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],  // Add HttpClientModule here
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
@@ -40,18 +40,21 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  // Formats the departure date to a more readable string
   formatDepartureDate(dateString: string): string {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
   }
 
+  // Calculates the taxes and fees based on the flight price
   calculateTaxesFees(price: number): number {
     const flightPrice = this.flight.flight_price;
     const taxes = flightPrice * (this.taxesFeesPercentage / 100);
     return parseFloat(taxes.toFixed(2));
   }
 
+  // Handles the submission of the payment form
   onPaymentSubmit(): void {
     console.log('All forms are valid. Proceeding to create booking...');
 

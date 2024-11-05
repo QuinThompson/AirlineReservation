@@ -15,13 +15,11 @@ import { FeaturedDestinationsComponent } from '../featured-destinations/featured
 })
 export class SearchComponent implements OnInit {
   countries: any[] = [];
-  @Output() searchClicked = new EventEmitter<{ loading: boolean; flights: any[] }>(); // Emit loading state and flights
+  @Output() searchClicked = new EventEmitter<{ loading: boolean; flights: any[] }>();
   activeButton: string = 'Roundtrip';
   fromCountry: string = '';
   toCountry: string = '';
-  // guests: number = 0;
-  guests: number | null = null; // Initialize guests to null
-
+  guests: number | null = null;
   departDate: string = '';
   returnDate: string = '';
   showfeatured: boolean = true;
@@ -32,6 +30,7 @@ export class SearchComponent implements OnInit {
     this.loadCountries();
   }
 
+  // Loads the list of countries from the Axios service and sorts them alphabetically
   loadCountries() {
     this.axiosService.getAllCountries()
       .then(response => {
@@ -43,11 +42,12 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  // Sets the active button for the type of trip (Roundtrip or One Way)
   setActive(button: string) {
     this.activeButton = button;
   }
 
-  // Method to handle search button click
+  // Handles the search action by sending the selected parameters to the backend
   onSearch() {
     const searchParams = {
       from_country: this.fromCountry,
@@ -57,32 +57,16 @@ export class SearchComponent implements OnInit {
       return_date: this.returnDate,
     };
 
-    // console.log('Search params:', searchParams);
-    
-    // Emit loading state as true
-    // this.searchClicked.emit({ loading: true, flights: [] });
-    
-    // Make the HTTP request to the Flask backend
     this.http.post('http://localhost:3003/api/flights/search', searchParams)
       .subscribe(
         (response: any) => {
-          // console.log('Flight results:', response);
-          
-          // Emit loading state as false after getting results
-          
-          // Navigate to the flight results component with the response data
-          // Note: You may not need this navigation if you're already displaying results in AppComponent
-          // console.log('Navigating to flight results component with flights:', response);
-          // this.router.navigate(['/flight-results'], { state: { flights: response } });
           this.router.navigate(['/flight-results'], { queryParams: { flights: JSON.stringify(response) } });
           this.searchClicked.emit({ loading: false, flights: response });
           this.showfeatured = false;
-          // this.searchClicked.emit({ loading: false, flights: response });
-          
         },
         error => {
           console.error('Error fetching flight results:', error);
-          this.searchClicked.emit({ loading: false, flights: [] }); // Emit loading state as false on error
+          this.searchClicked.emit({ loading: false, flights: [] });
         }
       );
   }

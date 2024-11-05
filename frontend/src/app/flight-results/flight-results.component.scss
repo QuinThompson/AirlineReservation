@@ -2,27 +2,25 @@
     width: 80%;
     margin: auto;
     text-align: center;
-  }
-  
-  .route-info {
+}
+
+.route-info {
     margin: 20px 0;
-  }
-  
-  .header-info {
-    text-align: left; /* Aligns text to the left */
-    margin: 10px 0; /* Adds some margin for spacing */
-  }
-  
-  .filter-buttons button {
+}
+
+.header-info {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.filter-buttons button {
     margin: 5px;
     padding: 10px 20px;
-    // border: 1px solid red;
     background-color: #e94e1b;
-
     background: none;
-  }
-  
-  .flight-card {
+}
+
+.flight-card {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -31,67 +29,53 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-  }
-  
-  .flight-info {
+}
+
+.flight-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin-bottom: 10px;
-  }
-  
-  .flight-time {
+}
+
+.flight-time {
     font-size: 18px;
     font-weight: bold;
-  }
-  
-  .flight-detail {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-    // align-items: flex-start;
-  }
+}
 
-  .seats-available {
+.flight-detail {
     font-size: 14px;
     color: #666;
     margin-top: 5px;
-    align-items: flex-start;
-  }
-  
-  .price-duration {
+}
+
+.seats-available {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.price-duration {
     text-align: right;
     display: flex;
-    gap: 10px; /* Space between items */
+    gap: 10px;
     align-items: flex-end;
-    // flex-direction: column;
-    // align-items: flex-end; /* Align content to the right */
-  }
-//   .price-duration {
-//     display: flex;
-//     gap: 10px; /* Space between items */
-//     align-items: center;
-//     text-align: right;
-//   }
-  
-  
-  .flight-price {
+}
+
+.flight-price {
     font-size: 20px;
     font-weight: bold;
     color: #000;
-  }
-  
-  .flight-duration {
-    font-size: 14px;
-    // color: #000;
-    color: #666;
+}
 
+.flight-duration {
+    font-size: 14px;
+    color: #666;
     margin-top: 5px;
-  }
-  
-  .select {
-    // background-color: red;
+}
+
+.select {
     background-color: #e94e1b;
     color: #fff;
     padding: 10px 0;
@@ -100,21 +84,21 @@
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
-    margin-top: 10px; /* Adds space above the button */
-  }
-  
-  .select:hover {
+    margin-top: 10px;
+}
+
+.select:hover {
     background-color: darkred;
-  }
-  
-  .load-more {
+}
+
+.load-more {
     margin-top: 20px;
     padding: 10px 20px;
     border: 1px solid red;
     background: none;
-  }
-  
-  .card {
+}
+
+.card {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -122,16 +106,16 @@
     max-width: 800px;
     margin: auto;
     margin-top: 1.5rem;
-  }
-  
-  .button-group {
+}
+
+.button-group {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  button {
+}
+
+button {
     background-color: #f1f3f5;
     color: #333;
     border: none;
@@ -139,59 +123,43 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  button.active {
+}
+
+button.active {
     background-color: #e94e1b;
     color: #fff;
-  }
+}
 
-  .button-group button {
+.button-group button {
     padding: 10px 20px;
     border: none;
     background-color: #f0f0f0;
     cursor: pointer;
     margin-right: 10px;
-  }
-  
-  .button-group button.active {
-    background-color: #e94e1b;
-    // background-color: #007bff; /* Change this to your preferred color */
-    color: white; /* Text color when active */
-  }
+}
 
-  .pagination-controls {
+.button-group button.active {
+    background-color: #e94e1b;
+    color: white;
+}
+
+.pagination-controls {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-  }
-  
-  .pagination-controls button {
+}
+
+.pagination-controls button {
     margin: 0 5px;
     padding: 5px 10px;
     cursor: pointer;
-  }
-  
-  .pagination-controls span {
+}
+
+.pagination-controls span {
     margin: 0 10px;
-  }
-  
-  .flight-info-container {
+}
+
+.flight-info-container {
     display: flex;
     justify-content: space-between;
-    // align-items: left; /* Vertically center items */
-    // padding: 10px 0;
-  }
-
-  
-//   .flight-detail {
-//     flex: 1; /* Take up available space on the left */
-//   }
-  
-//   .price-duration {
-//     display: flex;
-//     gap: 10px; /* Space between items */
-//     align-items: center;
-//     text-align: right;
-//   }
-  
+}
