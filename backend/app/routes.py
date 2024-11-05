@@ -149,3 +149,42 @@ def get_booking(booking_reference):
             'updated_at': detail.updated_at,
         })
     return jsonify(response_data), 200
+
+
+@routes.route('/api/bookingemail/<string:email>/<string:lastName>', methods=['GET'])
+def get_booking_by_email_and_lastname(email, lastName):
+    passenger = Passenger.query.filter_by(email=email).first()
+    
+    if passenger is None:
+        return jsonify({'message': 'Passenger not found'}), 404
+
+    booking_bridges = Booking_Bridge.query.filter_by(passenger_id=passenger.id).all()
+    
+    if not booking_bridges:
+        return jsonify({'message': 'No bookings found for this passenger'}), 200
+
+    response_data = []
+    for bridge in booking_bridges:
+        booking = Booking.query.get(bridge.booking_reference_number)
+        flight_details = Flight.query.get(bridge.flight_id)
+        
+        if booking and flight_details:
+            response_data.append({
+                'booking_reference': booking.booking_reference_number,
+                'flight_id': {
+                    'flight_number': flight_details.flight_number,
+                    'origin': flight_details.origin,
+                    'destination': flight_details.destination,
+                    'departure_date': flight_details.departure_date.strftime('%Y-%m-%d'),
+                },
+                'passenger': {
+                    'first_name': passenger.first_name,
+                    'last_name': passenger.last_name,
+                    'email': passenger.email,
+                    'phone_number': passenger.phone_number,
+                },
+                'created_at': bridge.created_at,
+                'updated_at': bridge.updated_at,
+            })
+
+    return jsonify(response_data), 200

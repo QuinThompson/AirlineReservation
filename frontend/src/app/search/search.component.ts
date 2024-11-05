@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AxiosService } from '../services/axios.service';
@@ -15,7 +15,7 @@ import { FeaturedDestinationsComponent } from '../featured-destinations/featured
 })
 export class SearchComponent implements OnInit {
   countries: any[] = [];
-  @Output() searchClicked = new EventEmitter<{ loading: boolean; flights: any[] }>();
+
   activeButton: string = 'Roundtrip';
   fromCountry: string = '';
   toCountry: string = '';
@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   returnDate: string = '';
   showfeatured: boolean = true;
 
-  constructor(private axiosService: AxiosService, private http: HttpClient, private router: Router) {}
+  constructor(private axiosService: AxiosService, private http: HttpClient, private router: Router, private renderer: Renderer2) {}
 
   ngOnInit(): void {
     this.loadCountries();
@@ -61,13 +61,34 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.router.navigate(['/flight-results'], { queryParams: { flights: JSON.stringify(response) } });
-          this.searchClicked.emit({ loading: false, flights: response });
-          this.showfeatured = false;
         },
         error => {
           console.error('Error fetching flight results:', error);
-          this.searchClicked.emit({ loading: false, flights: [] });
         }
       );
+  }
+
+  openDatePicker(event: Event, dateField: 'departDate' | 'returnDate') {
+    const input = event.target as HTMLInputElement;
+    const tempInput = this.renderer.createElement('input');
+    this.renderer.setAttribute(tempInput, 'type', 'date');
+
+    // Set value to existing date if available
+    if (this[dateField]) {
+      tempInput.value = this[dateField];
+    }
+
+    tempInput.style.visibility = 'hidden';
+    tempInput.style.position = 'absolute';
+    input.parentNode!.insertBefore(tempInput, input);
+
+    tempInput.focus();
+
+    // Capture selected date and assign it to the appropriate field
+    tempInput.addEventListener('change', () => {
+      this[dateField] = tempInput.value;
+      input.value = tempInput.value.split('-').reverse().join('/'); // Format as dd/mm/yyyy
+      tempInput.remove();
+    });
   }
 }

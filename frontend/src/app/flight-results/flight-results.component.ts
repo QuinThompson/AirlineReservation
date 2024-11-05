@@ -11,8 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FlightResultsComponent implements OnInit {
   @Input() flights: any[] = [];
-  @Output() bookFlight = new EventEmitter<{ showBooking: boolean; flights: any[] }>();
-  
+
   currentPage: number = 1;
   pageSize: number = 5;
   selectedSort: string = '';
@@ -111,6 +110,5 @@ export class FlightResultsComponent implements OnInit {
   // Navigates to the booking page for a selected flight
   goToBooking(flight: any) {
     this.router.navigate(['/booking'], { queryParams: { flights: JSON.stringify(flight) } });
-    this.bookFlight.emit({ showBooking: true, flights: flight });
   }
 }
