@@ -2,11 +2,11 @@
 
 # Angular Project with Dockerized Frontend and Backend
 
-This project contains an Angular frontend and a backend service, both of which are dockerized for easier setup and deployment. The backend is based on Flask, and connects to a PostgreSQL database.
+This project contains an my first ever Angular frontend. With a backend consisting of a Flask Server and a PostgreSQL database. Both of which are dockerized for easier setup and deployment. The backend is based on Flask, and connects to a PostgreSQL database. This project was tested both on windows and mac to ensure that it works as expected.
 
 ## Prerequisites
 
-Make sure you have the following installed:
+Make sure you have the following installed: (Downloading Docker Desktop is Recommended)
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
@@ -66,5 +66,6 @@ To change flight data, you can modify the `flights_data.json` file in the `backe
 
 ## Adding or Removing Flights
 
-To add or remove flights, you can modify the `flights_data.json` file as described above. Once complete restart the containers using `docker-compose up -d` to apply the changes.
+To add or remove flights, you can modify the `flights_data.json` file as described above. 
+Once complete stop the containers using `docker-compose down` and restart the containers using `docker-compose up -d` to apply the changes.
 
