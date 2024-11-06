@@ -10,7 +10,7 @@ export class AxiosService {
   constructor() {
     this.axiosInstance = axios.create({
       baseURL: 'https://restcountries.com/v3.1',
-      timeout: 1000,
+      timeout: 6000,
       headers: { 'Content-Type': 'application/json' }
     });
   }
