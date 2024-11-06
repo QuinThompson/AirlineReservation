@@ -23,11 +23,18 @@ export class SearchComponent implements OnInit {
   departDate: string = '';
   returnDate: string = '';
   showfeatured: boolean = true;
-
+  submitted: boolean = false;
+  
   constructor(private axiosService: AxiosService, private http: HttpClient, private router: Router, private renderer: Renderer2) {}
 
   ngOnInit(): void {
     this.loadCountries();
+  }
+
+  formValid() {
+    // Check if all required fields are filled and valid
+    return this.fromCountry && this.toCountry && this.guests && this.departDate &&
+      (this.activeButton !== 'Roundtrip' || this.returnDate);
   }
 
   // Loads the list of countries from the Axios service and sorts them alphabetically

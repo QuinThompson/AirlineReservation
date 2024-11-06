@@ -31,7 +31,35 @@ This will build the Docker images for the frontend and backend.
 ### 3. Start the Containers
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 This will start the frontend and backend containers. The frontend will be available at `http://localhost:4200` and the backend will be available at `http://localhost:3003`.
+
+
+
+# Project Details
+
+## Assumptions and Constraints
+
+- All flights are one-way/round and do not have layovers.
+- A person can book for one or more person(s) per flight.
+
+## Changing Flight Data
+
+To change flight data, you can modify the `flights_data.json` file in the `backend/data` directory. This file contains an array of flight objects, each with the following properties:
+- `flight_number`: A unique identifier for the flight.
+- `origin`: The origin airport code.
+- `destination`: The destination airport code.
+- `departure_date`: The departure date in the format `YYYY-MM-DD`.
+- `departure_time`: The departure time in the format `HH:MM:SS`.   
+- `arrival_date`: The arrival date in the format `YYYY-MM-DD`.
+- `arrival_time`: The arrival time in the format `HH:MM:SS`.
+- `duration`: The duration of the flight in minutes.
+- `capacity`: The maximum number of passengers that can be booked for this flight.
+- `price`: The price of the flight per seat.
+
+## Adding or Removing Flights
+
+To add or remove flights, you can modify the `flights_data.json` file as described above. Once complete restart the containers using `docker-compose up -d` to apply the changes.
+

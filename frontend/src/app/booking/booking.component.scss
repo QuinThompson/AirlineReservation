@@ -88,4 +88,12 @@ label {
     gap: 15px; /* Adjust the space as needed */
     margin-top: 20px;
 }
-  
+
+.invalid {
+  border: 2px solid red;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
