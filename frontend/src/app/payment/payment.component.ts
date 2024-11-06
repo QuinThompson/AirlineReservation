@@ -3,24 +3,38 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
   @Input() flight: any;
   @Input() formGroup: any[] = [];
+ 
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) {}
 
+  // paymentForm: FormGroup = this.fb.group({});
+  paymentForm!: FormGroup;
+
+  submitted = false;
   taxes: number = 0.0;
   taxesFeesPercentage: number = 15;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
+    
+    this.paymentForm = this.fb.group({
+        cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16}$')]],  // Requires exactly 16 digits
+        expiryDate: ['', [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])/[0-9]{2}$')]],  // Format MM/YY
+        cvv: ['', [Validators.required, Validators.pattern('^[0-9]{3}$')]],  // Requires exactly 3 digits
+        nameOnCard: ['', Validators.required]
+    });
+
     this.route.queryParams.subscribe(params => {
       const flightsData = params['flights'];
       const formData = params['formdata'];
@@ -56,6 +70,13 @@ export class PaymentComponent implements OnInit {
 
   // Handles the submission of the payment form
   onPaymentSubmit(): void {
+    // if (this.paymentForm.invalid) {
+    //   // Mark all controls as touched to trigger validation messages
+    //   this.paymentForm.markAllAsTouched();
+    //   return; // Prevent further action if form is invalid
+    // }
+
+
     console.log('All forms are valid. Proceeding to create booking...');
 
     const requestData = {

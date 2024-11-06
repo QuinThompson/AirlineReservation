@@ -94,3 +94,12 @@ p {
   color: #777;
   margin-top: 10px;
 }
+
+.invalid {
+  border: 2px solid red;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

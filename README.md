@@ -44,6 +44,11 @@ This will start the frontend and backend containers. The frontend will be availa
 
 - All flights are one-way/round and do not have layovers.
 - A person can book for one or more person(s) per flight.
+- Credit Card information is not stored in the system.
+- Credit Card follows:
+    - 16 Digit format. 
+    - 3 Digit Security Code.
+    - 4 Digit Expiration Date with format MM/YY.
 
 ## Changing Flight Data
 

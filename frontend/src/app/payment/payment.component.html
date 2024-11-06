@@ -1,53 +1,79 @@
 <div class="container">
-  <h2>Summary and Payment</h2>
-  <div class="content">
-        
-        <div class="left-panel">
-            <div class="flight-details card">
-                <h3>Flight Details</h3>
-                <p>From: {{ flight.origin }}</p>
-                <p>To: {{ flight.destination }}</p>
-                <p>Date: {{ formatDepartureDate(flight.departure_date) }}</p>
-                <p>Passengers: {{ flight.guests }} Adult(s)</p>
-            </div>
-        
-            <div class="payment-info card">
-                <h3>Payment Information</h3>
-                <form>
-                <div class="form-group">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" class="form-control" />
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                    <label for="expiryDate">Expiry Date</label>
-                    <input type="text" id="expiryDate" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nameOnCard">Name on Card</label>
-                    <input type="text" id="nameOnCard" class="form-control" />
-                </div>
-                </form>
-            </div>
+    <h2>Summary and Payment</h2>
+    <div class="content">
+      <div class="left-panel">
+        <div class="flight-details card">
+          <h3>Flight Details</h3>
+          <p>From: {{ flight.origin }}</p>
+          <p>To: {{ flight.destination }}</p>
+          <p>Date: {{ formatDepartureDate(flight.departure_date) }}</p>
+          <p>Passengers: {{ flight.guests }} Adult(s)</p>
         </div>
-        
-        <div class="right-panel">
-            <div class="price-summary card">
-                <h3>Price Summary</h3>
-                <p>Base Fare<span>{{ flight.flight_price | number:'1.2-2' }}</span></p>
-                <p>Taxes & Fees ({{ this.taxesFeesPercentage }}%)<span>$ {{ calculateTaxesFees(flight.flight_price) | number:'1.2-2' }}</span></p>
-                <hr />
-                <p>Total<span><b>$ {{ (flight.flight_price + calculateTaxesFees(flight.flight_price)) | number:'1.2-2' }}</b></span></p>
+  
+        <div class="payment-info card">
+          <h3>Payment Information</h3>
+          <form [formGroup]="paymentForm">
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input
+                type="text"
+                id="cardNumber"
+                class="form-control"
+                formControlName="cardNumber"
+                [ngClass]="{'invalid': paymentForm.get('cardNumber')?.invalid && submitted}"
+              />
             </div>
-        
-            <button type="button" class="btn btn-primary" (click)="onPaymentSubmit()">Confirm and Pay</button>
-            <p class="secure-payment">Secure payment processed by Stripe</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input
+                  type="text"
+                  id="expiryDate"
+                  class="form-control"
+                  formControlName="expiryDate"
+                  [ngClass]="{'invalid': paymentForm.get('expiryDate')?.invalid && submitted}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  class="form-control"
+                  formControlName="cvv"
+                  [ngClass]="{'invalid': paymentForm.get('cvv')?.invalid && submitted}"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nameOnCard">Name on Card</label>
+              <input
+                type="text"
+                id="nameOnCard"
+                class="form-control"
+                formControlName="nameOnCard"
+                [ngClass]="{'invalid': paymentForm.get('nameOnCard')?.invalid && submitted}"
+              />
+            </div>
+          </form>
         </div>
+      </div>
+  
+      <div class="right-panel">
+        <div class="price-summary card">
+          <h3>Price Summary</h3>
+          <p>Base Fare<span>{{ flight.flight_price | number:'1.2-2' }}</span></p>
+          <p>Taxes & Fees ({{ taxesFeesPercentage }}%)<span>$ {{ calculateTaxesFees(flight.flight_price) | number:'1.2-2' }}</span></p>
+          <hr />
+          <p>Total<span><b>$ {{ (flight.flight_price + calculateTaxesFees(flight.flight_price)) | number:'1.2-2' }}</b></span></p>
+        </div>
+  
+        <!-- Disable button if form is invalid -->
+        <button type="button" class="btn btn-primary" (click)="onPaymentSubmit()" [disabled]="!paymentForm.valid">
+          Confirm and Pay
+        </button>
+        <p class="secure-payment">Secure payment processed by Stripe</p>
+      </div>
     </div>
-</div>
-<!-- <p>payment works!</p> -->
+  </div>
+  
